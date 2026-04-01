@@ -6,22 +6,24 @@ import static com.videorental.TestFixture.*;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class CustomerStatement_Mix_Test {
+    private final String CUSTOMER_NAME = "John Doe";
+    private final String MOVIE_PREFIX = "Movie";
     @Test
     void given_3RegularMovieFor2day_then_printStatement() {
-        Customer customer = createCustomer("ANY_NAME");
+        Customer customer = createCustomer(CUSTOMER_NAME);
 
         // when
-        customer.addRental(regularRent("Regular Movie1", 2));
-        customer.addRental(regularRent("Regular Movie2", 2));
-        customer.addRental(regularRent("Regular Movie3", 2));
+        customer.addRental(regularRent(MOVIE_PREFIX+"1", 2));
+        customer.addRental(regularRent(MOVIE_PREFIX+"2", 2));
+        customer.addRental(regularRent(MOVIE_PREFIX+"3", 2));
 
         // then
-        String stmtResult = customer.statement();
-        assertThat(stmtResult).isEqualTo(
-                "Rental Record for ANY_NAME\n" +
-                        "\t2.0(Regular Movie1)\n" +
-                        "\t2.0(Regular Movie2)\n" +
-                        "\t2.0(Regular Movie3)\n" +
+        
+        assertThat(customer.statement()).isEqualTo(
+                "Rental Record for John Doe\n" +
+                        "\t2.0(Movie1)\n" +
+                        "\t2.0(Movie2)\n" +
+                        "\t2.0(Movie3)\n" +
                         "Amount owed is 6.0\n" +
                         "You earned 3 frequent renter pointers"
         );
@@ -30,20 +32,20 @@ public class CustomerStatement_Mix_Test {
     @Test
     public void given_3NewReleaseMovieFor7day_then_63원청구() {
         // given
-        Customer c = createCustomer("James");
+        Customer c = createCustomer(CUSTOMER_NAME);
 
         // when
-        c.addRental(newRent("New Movie1", 7));
-        c.addRental(newRent("New Movie2", 7));
-        c.addRental(newRent("New Movie3", 7));
+        c.addRental(newRent(MOVIE_PREFIX+"1", 7));
+        c.addRental(newRent(MOVIE_PREFIX+"2", 7));
+        c.addRental(newRent(MOVIE_PREFIX+"3", 7));
         String stmt = c.statement();
 
         // then
         assertThat(stmt).isEqualTo(
-                "Rental Record for James\n" +
-                        "\t21.0(New Movie1)\n" +
-                        "\t21.0(New Movie2)\n" +
-                        "\t21.0(New Movie3)\n" +
+                "Rental Record for John Doe\n" +
+                        "\t21.0(Movie1)\n" +
+                        "\t21.0(Movie2)\n" +
+                        "\t21.0(Movie3)\n" +
                         "Amount owed is 63.0\n" +
                         "You earned 6 frequent renter pointers"
         );
@@ -51,22 +53,22 @@ public class CustomerStatement_Mix_Test {
 
     @Test
     void given_4ChildrenMovieFor4day_then_printStatement() {
-        Customer customer = createCustomer("John");
+        Customer customer = createCustomer(CUSTOMER_NAME);
 
         // when
-        customer.addRental(childrenRent("Child Movie1", 4));
-        customer.addRental(childrenRent("Child Movie2", 4));
-        customer.addRental(childrenRent("Child Movie3", 4));
-        customer.addRental(childrenRent("Child Movie4", 4));
+        customer.addRental(childrenRent(MOVIE_PREFIX+"1", 4));
+        customer.addRental(childrenRent(MOVIE_PREFIX+"2", 4));
+        customer.addRental(childrenRent(MOVIE_PREFIX+"3", 4));
+        customer.addRental(childrenRent(MOVIE_PREFIX+"4", 4));
 
         // then
-        String stmtResult = customer.statement();
-        assertThat(stmtResult).isEqualTo(
-                "Rental Record for John\n" +
-                        "\t3.0(Child Movie1)\n" +
-                        "\t3.0(Child Movie2)\n" +
-                        "\t3.0(Child Movie3)\n" +
-                        "\t3.0(Child Movie4)\n" +
+        
+        assertThat(customer.statement()).isEqualTo(
+                "Rental Record for John Doe\n" +
+                        "\t3.0(Movie1)\n" +
+                        "\t3.0(Movie2)\n" +
+                        "\t3.0(Movie3)\n" +
+                        "\t3.0(Movie4)\n" +
                         "Amount owed is 12.0\n" +
                         "You earned 4 frequent renter pointers"
         );
@@ -74,17 +76,17 @@ public class CustomerStatement_Mix_Test {
 
     @Test
     void given_Regular3D_Children2D_New4D_then_printStatement() {
-        Customer customer = createCustomer("John");
+        Customer customer = createCustomer(CUSTOMER_NAME);
 
         // when
-        customer.addRental(regularRent("Movie1", 3));
-        customer.addRental(childrenRent("Movie2", 2));
-        customer.addRental(newRent("Movie3", 4));
+        customer.addRental(regularRent(MOVIE_PREFIX+"1", 3));
+        customer.addRental(childrenRent(MOVIE_PREFIX+"2", 2));
+        customer.addRental(newRent(MOVIE_PREFIX+"3", 4));
 
         // then
-        String stmtResult = customer.statement();
-        assertThat(stmtResult).isEqualTo(
-                "Rental Record for John\n" +
+        
+        assertThat(customer.statement()).isEqualTo(
+                "Rental Record for John Doe\n" +
                         "\t3.5(Movie1)\n" +
                         "\t1.5(Movie2)\n" +
                         "\t12.0(Movie3)\n" +
