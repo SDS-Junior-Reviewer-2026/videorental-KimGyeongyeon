@@ -25,7 +25,26 @@ public class CustomerStatement_NewRelease_Test {
     }
 
     @Test
-    public void given_NewReleaseMovieFor7day_then_3원청구() {
+    public void given_NewReleaseMovieFor2day_then_6원청구_보너스포인트() {
+        // given
+        Customer c = TestFixture.createCustomer("James");
+        Rental rental = TestFixture.newRent("New Movie", 2);
+
+        // when
+        c.addRental(rental);
+        String stmt = c.statement();
+
+        // then
+        assertThat(stmt).isEqualTo(
+                "Rental Record for James\n" +
+                        "\t6.0(New Movie)\n" +
+                        "Amount owed is 6.0\n" +
+                        "You earned 2 frequent renter pointers"
+        );
+    }
+
+    @Test
+    public void given_NewReleaseMovieFor7day_then_21원청구() {
         // given
         Customer c = TestFixture.createCustomer("James");
         Rental rental = TestFixture.newRent("New Movie", 7);
