@@ -5,11 +5,14 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class CustomerStatement_NewRelease_Test {
+    private final String CUSTOMER_NAME = "James";
+    private final String MOVIE_NAME = "New Movie";
+
     @Test
     public void given_NewReleaseMovieFor1day_then_3원청구() {
         // given
-        Customer c = TestFixture.createCustomer("James");
-        Rental rental = TestFixture.newRent("New Movie", 1);
+        Customer c = TestFixture.createCustomer(CUSTOMER_NAME);
+        Rental rental = TestFixture.newRent(MOVIE_NAME, 1);
 
         // when
         c.addRental(rental);
@@ -27,8 +30,8 @@ public class CustomerStatement_NewRelease_Test {
     @Test
     public void given_NewReleaseMovieFor2day_then_6원청구_보너스포인트() {
         // given
-        Customer c = TestFixture.createCustomer("James");
-        Rental rental = TestFixture.newRent("New Movie", 2);
+        Customer c = TestFixture.createCustomer(CUSTOMER_NAME);
+        Rental rental = TestFixture.newRent(MOVIE_NAME, 2);
 
         // when
         c.addRental(rental);
@@ -46,8 +49,8 @@ public class CustomerStatement_NewRelease_Test {
     @Test
     public void given_NewReleaseMovieFor7day_then_21원청구() {
         // given
-        Customer c = TestFixture.createCustomer("James");
-        Rental rental = TestFixture.newRent("New Movie", 7);
+        Customer c = TestFixture.createCustomer(CUSTOMER_NAME);
+        Rental rental = TestFixture.newRent(MOVIE_NAME, 7);
 
         // when
         c.addRental(rental);

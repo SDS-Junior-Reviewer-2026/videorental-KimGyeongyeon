@@ -5,12 +5,15 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class CustomerStatement_Children_Test {
+    private final String CUSTOMER_NAME = "John";
+    private final String MOVIE_NAME = "Child Movie";
+
     @Test
     void given_ChildrenMovieFor3day_then_printStatement() {
-        Customer customer = TestFixture.createCustomer("John");
+        Customer customer = TestFixture.createCustomer(CUSTOMER_NAME);
 
         // when
-        customer.addRental(TestFixture.childrenRent("Child Movie", 3));
+        customer.addRental(TestFixture.childrenRent(MOVIE_NAME, 3));
 
         // then
         String stmtResult = customer.statement();
@@ -24,10 +27,10 @@ public class CustomerStatement_Children_Test {
 
     @Test
     void given_ChildrenMovieFor4day_then_printStatement() {
-        Customer customer = TestFixture.createCustomer("John");
+        Customer customer = TestFixture.createCustomer(CUSTOMER_NAME);
 
         // when
-        customer.addRental(TestFixture.childrenRent("Child Movie", 4));
+        customer.addRental(TestFixture.childrenRent(MOVIE_NAME, 4));
 
         // then
         String stmtResult = customer.statement();
