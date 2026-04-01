@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class CustomerStatementTest {
+public class CustomerStatement_Regular_Test {
     private Customer createCustomer(String name) {
         return new Customer(name);
     }
