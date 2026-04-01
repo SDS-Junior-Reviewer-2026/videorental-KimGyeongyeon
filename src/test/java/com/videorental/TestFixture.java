@@ -13,4 +13,8 @@ public class TestFixture {
         return new Rental(new Movie(title, Movie.NEW_RELEASE), day);
     }
 
+    public static Rental childrenRent(String title, int day) {
+        return new Rental(new Movie(title, Movie.CHILDRENS), day);
+    }
+
 }
