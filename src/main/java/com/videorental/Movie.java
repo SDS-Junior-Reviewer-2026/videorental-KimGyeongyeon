@@ -7,10 +7,12 @@ public class Movie {
 	
 	private String title;
 	private int priceCode;
+	private MovieRentStrategy strategy;
 
 	public Movie(String title, int priceCode) {
 		this.title = title;
 		this.priceCode = priceCode;
+		this.strategy = MovieRentStrategyFactory.getStrategy(priceCode);
 	}
 
 	public int getPriceCode() {
@@ -23,5 +25,26 @@ public class Movie {
 
 	public String getTitle() {
 		return title;
+	}
+
+	private double getAmount(int daysRented) {
+		return strategy.getCharge(daysRented);
+	}
+
+	private int getFrequency(int daysRented) {
+		return strategy.getFrequentPoint(daysRented);
+	}
+
+	private String getStatementString(double amount) {
+		return "\t" + amount + "(" + title + ")\n";
+	}
+
+	public RentalStatement getRentalStatement(int daysRented) {
+		double amt = this.getAmount(daysRented);
+		return new RentalStatement(
+				amt,
+				this.getFrequency(daysRented),
+				this.getStatementString(amt)
+		);
 	}
 }
