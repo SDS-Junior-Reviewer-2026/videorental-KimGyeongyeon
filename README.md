@@ -1,3 +1,16 @@
+## 과제 결과물
+
+🛼STEP1 => 
+https://github.com/SDS-Junior-Reviewer-2026/videorental-KimGyeongyeon/pull/1
+
+🛼STEP2 => 
+https://github.com/SDS-Junior-Reviewer-2026/videorental-KimGyeongyeon/pull/2
+
+🛼STEP3 =>
+https://github.com/SDS-Junior-Reviewer-2026/videorental-KimGyeongyeon/pull/3
+
+---
+
 # Video com.videorental.Rental Service 소개
 비디오 대여점에서 고객의 대여료 내역을 계산하고 출력하는 프로그램
 * 고객이 대여한 비디오와 대여 기간을 표시
