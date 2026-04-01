@@ -18,8 +18,8 @@ public class CustomerStatement_Mix_Test {
         customer.addRental(regularRent(MOVIE_PREFIX+"3", 2));
 
         // then
-        String stmtResult = customer.statement();
-        assertThat(stmtResult).isEqualTo(
+        
+        assertThat(customer.statement()).isEqualTo(
                 "Rental Record for John Doe\n" +
                         "\t2.0(Movie1)\n" +
                         "\t2.0(Movie2)\n" +
@@ -62,8 +62,8 @@ public class CustomerStatement_Mix_Test {
         customer.addRental(childrenRent(MOVIE_PREFIX+"4", 4));
 
         // then
-        String stmtResult = customer.statement();
-        assertThat(stmtResult).isEqualTo(
+        
+        assertThat(customer.statement()).isEqualTo(
                 "Rental Record for John Doe\n" +
                         "\t3.0(Movie1)\n" +
                         "\t3.0(Movie2)\n" +
@@ -84,8 +84,8 @@ public class CustomerStatement_Mix_Test {
         customer.addRental(newRent(MOVIE_PREFIX+"3", 4));
 
         // then
-        String stmtResult = customer.statement();
-        assertThat(stmtResult).isEqualTo(
+        
+        assertThat(customer.statement()).isEqualTo(
                 "Rental Record for John Doe\n" +
                         "\t3.5(Movie1)\n" +
                         "\t1.5(Movie2)\n" +

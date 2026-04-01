@@ -14,10 +14,10 @@ public class CustomerStatement_Regular_Test {
         Customer customer = createCustomer(CUSTOMER_NAME);
 
         // when
-        String stmtResult = customer.statement();
+        
 
         // then
-        assertThat(stmtResult).isEqualTo("Rental Record for ANY_NAME\n"
+        assertThat(customer.statement()).isEqualTo("Rental Record for ANY_NAME\n"
                 +"Amount owed is 0.0\n"
         +"You earned 0 frequent renter pointers"
         );
@@ -31,8 +31,8 @@ public class CustomerStatement_Regular_Test {
         customer.addRental(regularRent(MOVIE_NAME, 2));
 
         // then
-        String stmtResult = customer.statement();
-        assertThat(stmtResult).isEqualTo(
+        
+        assertThat(customer.statement()).isEqualTo(
                 "Rental Record for ANY_NAME\n" +
                         "\t2.0(Regular Movie)\n" +
                         "Amount owed is 2.0\n" +
@@ -48,8 +48,8 @@ public class CustomerStatement_Regular_Test {
         customer.addRental(regularRent(MOVIE_NAME, 3));
 
         // then
-        String stmtResult = customer.statement();
-        assertThat(stmtResult).isEqualTo(
+        
+        assertThat(customer.statement()).isEqualTo(
                 "Rental Record for ANY_NAME\n" +
                         "\t3.5(Regular Movie)\n" +
                         "Amount owed is 3.5\n" +

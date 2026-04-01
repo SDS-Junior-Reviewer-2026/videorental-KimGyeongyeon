@@ -16,10 +16,10 @@ public class CustomerStatement_NewRelease_Test {
 
         // when
         c.addRental(rental);
-        String stmt = c.statement();
+        
 
         // then
-        assertThat(stmt).isEqualTo(
+        assertThat(c.statement()).isEqualTo(
                 "Rental Record for James\n" +
                         "\t3.0(New Movie)\n" +
                         "Amount owed is 3.0\n" +
@@ -35,10 +35,10 @@ public class CustomerStatement_NewRelease_Test {
 
         // when
         c.addRental(rental);
-        String stmt = c.statement();
+        
 
         // then
-        assertThat(stmt).isEqualTo(
+        assertThat(c.statement()).isEqualTo(
                 "Rental Record for James\n" +
                         "\t6.0(New Movie)\n" +
                         "Amount owed is 6.0\n" +
@@ -54,10 +54,10 @@ public class CustomerStatement_NewRelease_Test {
 
         // when
         c.addRental(rental);
-        String stmt = c.statement();
+        
 
         // then
-        assertThat(stmt).isEqualTo(
+        assertThat(c.statement()).isEqualTo(
                 "Rental Record for James\n" +
                         "\t21.0(New Movie)\n" +
                         "Amount owed is 21.0\n" +

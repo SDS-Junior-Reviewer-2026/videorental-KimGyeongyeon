@@ -16,8 +16,8 @@ public class CustomerStatement_Children_Test {
         customer.addRental(TestFixture.childrenRent(MOVIE_NAME, 3));
 
         // then
-        String stmtResult = customer.statement();
-        assertThat(stmtResult).isEqualTo(
+        
+        assertThat(customer.statement()).isEqualTo(
                 "Rental Record for John\n" +
                         "\t1.5(Child Movie)\n" +
                         "Amount owed is 1.5\n" +
@@ -31,10 +31,9 @@ public class CustomerStatement_Children_Test {
 
         // when
         customer.addRental(TestFixture.childrenRent(MOVIE_NAME, 4));
-
         // then
-        String stmtResult = customer.statement();
-        assertThat(stmtResult).isEqualTo(
+        
+        assertThat(customer.statement()).isEqualTo(
                 "Rental Record for John\n" +
                         "\t3.0(Child Movie)\n" +
                         "Amount owed is 3.0\n" +
